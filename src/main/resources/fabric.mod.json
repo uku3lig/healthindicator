@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "healthindicator",
+  "version": "${version}",
+  "name": "HealthIndicator",
+  "description": "shows you a warning when your health goes under a certain amount",
+  "authors": [
+    "uku"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/healthindicator/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "net.uku3lig.healthindicator.HealthIndicator"
+    ]
+  },
+  "mixins": [
+    "healthindicator.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "minecraft": "1.19"
+  }
+}
