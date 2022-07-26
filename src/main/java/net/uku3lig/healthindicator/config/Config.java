@@ -16,9 +16,10 @@ public class Config {
     private static final Logger logger = LogManager.getLogger("HealthIndicatorConfig");
 
     private int minHealth;
+    private Position position;
 
     public Config() {
-        this(6);
+        this(6, Position.TOP_LEFT);
     }
 
     public static Config readConfig(File file) {
