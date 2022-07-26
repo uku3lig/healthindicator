@@ -1,0 +1,4 @@
+{
+  "healthindicator.health": "Health Points",
+  "healthindicator.health.tooltip": "Minimum health points to show the warning. 2 points = 1 heart"
+}

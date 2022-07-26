@@ -20,7 +20,7 @@ public abstract class MixinInGameHud {
 
     @Redirect(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHealthBar(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/entity/player/PlayerEntity;IIIIFIIIZ)V"))
     private void renderHealthIndicator(InGameHud instance, MatrixStack matrices, PlayerEntity player, int x, int y, int lines, int regeneratingHeartIndex, float maxHealth, int lastHealth, int health, int absorption, boolean blinking) {
-        if (lastHealth <= 14) {
+        if (lastHealth <= HealthIndicator.getConfig().getMinHealth()) {
             RenderSystem.setShaderTexture(0, HealthIndicator.ICONS);
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
             this.client.inGameHud.drawTexture(new MatrixStack(), 5, 5, 0, 0, 32, 32);
