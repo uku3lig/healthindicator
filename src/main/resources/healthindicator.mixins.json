@@ -4,6 +4,7 @@
   "package": "net.uku3lig.healthindicator.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
+    "MixinClientPlayerEntity",
     "MixinInGameHud"
   ],
   "injectors": {

@@ -17,9 +17,10 @@ public class Config {
 
     private int minHealth;
     private Position position;
+    private boolean playSound;
 
     public Config() {
-        this(6, Position.TOP_LEFT);
+        this(6, Position.TOP_LEFT, false);
     }
 
     public static Config readConfig(File file) {
