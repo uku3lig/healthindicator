@@ -1,12 +1,11 @@
 package net.uku3lig.healthindicator.config;
 
 import lombok.Getter;
-import net.minecraft.util.TranslatableOption;
 
 import java.util.Arrays;
 
 @Getter // lombok generates the methods that have to be implemented
-public enum Position implements TranslatableOption {
+public enum Position {
     TOP_LEFT(0, "position.topLeft"),
     TOP_RIGHT(1, "position.topRight"),
     BOTTOM_LEFT(2, "position.bottomLeft"),
