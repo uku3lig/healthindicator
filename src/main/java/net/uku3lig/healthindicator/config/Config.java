@@ -1,42 +1,23 @@
 package net.uku3lig.healthindicator.config;
 
-import com.moandjiezana.toml.Toml;
-import com.moandjiezana.toml.TomlWriter;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import net.uku3lig.ukulib.config.IConfig;
+import net.uku3lig.ukulib.config.Position;
 
-import java.io.File;
-import java.io.IOException;
-
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-public class Config {
-    private static final Logger logger = LogManager.getLogger("HealthIndicatorConfig");
-
+@NoArgsConstructor
+public class Config implements IConfig<Config> {
     private int minHealth;
     private Position position;
     private boolean playSound;
 
-    public Config() {
-        this(6, Position.TOP_LEFT, false);
-    }
-
-    public static Config readConfig(File file) {
-        if (!file.exists()) {
-            try {
-                new Config().writeConfig(file);
-            } catch (IOException e) {
-                logger.warn("Could not write default configuration file", e);
-            }
-            return new Config();
-        } else {
-            return new Toml().read(file).to(Config.class);
-        }
-    }
-
-    public void writeConfig(File file) throws IOException {
-        new TomlWriter().write(this, file);
+    @Override
+    public Config defaultConfig() {
+        return new Config(6, Position.TOP_LEFT, false);
     }
 }

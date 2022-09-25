@@ -1,10 +1,6 @@
 {
   "healthindicator.health": "Health points",
   "healthindicator.health.tooltip": "Minimum health points to show the warning. 2 points = 1 heart",
-  "healthindicator.position": "Position",
-  "position.topLeft": "Top Left",
-  "position.topRight": "Top Right",
-  "position.bottomLeft": "Bottom Left",
-  "position.bottomRight": "Bottom Right",
-  "healthindicator.playSound": "Play sound"
+  "healthindicator.playsound": "Play sound",
+  "healthindicator.position": "Position"
 }

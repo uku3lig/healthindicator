@@ -7,6 +7,6 @@ import net.uku3lig.healthindicator.config.ConfigScreen;
 public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return ConfigScreen::new;
+        return parent -> new ConfigScreen(parent, HealthIndicator.getManager());
     }
 }
