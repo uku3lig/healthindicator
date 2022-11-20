@@ -12,11 +12,8 @@
   "icon": "assets/healthindicator/icon.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "net.uku3lig.healthindicator.HealthIndicator"
-    ],
-    "modmenu": [
-      "net.uku3lig.healthindicator.ModMenuIntegration"
+    "ukulib": [
+      "net.uku3lig.healthindicator.UkulibHook"
     ]
   },
   "mixins": [
@@ -24,6 +21,6 @@
   ],
   "depends": {
     "fabricloader": ">=0.13",
-    "minecraft": "1.18.x"
+    "ukulib": ">=0.3"
   }
 }

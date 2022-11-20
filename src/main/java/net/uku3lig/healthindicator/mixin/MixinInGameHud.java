@@ -7,7 +7,7 @@ import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.uku3lig.healthindicator.HealthIndicator;
-import net.uku3lig.healthindicator.config.Position;
+import net.uku3lig.healthindicator.config.Config;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,13 +21,14 @@ public abstract class MixinInGameHud {
 
     @Redirect(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHealthBar(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/entity/player/PlayerEntity;IIIIFIIIZ)V"))
     private void renderHealthIndicator(InGameHud instance, MatrixStack matrices, PlayerEntity player, int x, int y, int lines, int regeneratingHeartIndex, float maxHealth, int lastHealth, int health, int absorption, boolean blinking) {
-        if (lastHealth <= HealthIndicator.getConfig().getMinHealth()) {
+        Config config = HealthIndicator.getManager().getConfig();
+
+        if (lastHealth <= config.getMinHealth()) {
             RenderSystem.setShaderTexture(0, HealthIndicator.ICONS);
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-            Position position = HealthIndicator.getConfig().getPosition();
-            int x1 = position.isRight() ? this.client.getWindow().getScaledWidth() - 5 - 32 : 5;
-            int y1 = position.isBottom() ? this.client.getWindow().getScaledHeight() - 5 - 32 : 5;
+            int x1 = config.getPosition().isRight() ? this.client.getWindow().getScaledWidth() - 5 - 32 : 5;
+            int y1 = config.getPosition().isBottom() ? this.client.getWindow().getScaledHeight() - 5 - 32 : 5;
             this.client.inGameHud.drawTexture(new MatrixStack(), x1, y1, 0, 0, 32, 32);
         }
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);

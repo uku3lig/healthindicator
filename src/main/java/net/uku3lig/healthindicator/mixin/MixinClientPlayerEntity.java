@@ -20,14 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
-    private final Config config = HealthIndicator.getConfig();
-
     protected MixinClientPlayerEntity(ClientWorld world, GameProfile profile) {
         super(world, profile);
     }
 
     @Inject(method = "damage", at = @At("HEAD"))
     private void soundOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        Config config = HealthIndicator.getManager().getConfig();
         if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()) {
             this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO, SoundCategory.PLAYERS, 1, 1);
         }
