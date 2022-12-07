@@ -5,12 +5,10 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.network.encryption.PlayerPublicKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.uku3lig.healthindicator.HealthIndicator;
 import net.uku3lig.healthindicator.config.Config;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,15 +16,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
-    protected MixinClientPlayerEntity(ClientWorld world, GameProfile profile, @Nullable PlayerPublicKey publicKey) {
-        super(world, profile, publicKey);
+    public MixinClientPlayerEntity(ClientWorld world, GameProfile profile) {
+        super(world, profile);
     }
 
     @Inject(method = "damage", at = @At("HEAD"))
     private void soundOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         Config config = HealthIndicator.getManager().getConfig();
         if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()) {
-            this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO, SoundCategory.PLAYERS, 1, 1);
+            this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.PLAYERS, 1, 1);
         }
     }
 }
