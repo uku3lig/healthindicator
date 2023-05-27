@@ -29,7 +29,7 @@ public abstract class MixinInGameHud {
 
             int x1 = config.getPosition().isRight() ? this.client.getWindow().getScaledWidth() - 5 - 32 : 5;
             int y1 = config.getPosition().isBottom() ? this.client.getWindow().getScaledHeight() - 5 - 32 : 5;
-            this.client.inGameHud.drawTexture(new MatrixStack(), x1, y1, 0, 0, 32, 32);
+            DrawableHelper.drawTexture(new MatrixStack(), x1, y1, 0, 0, 32, 32);
         }
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, DrawableHelper.GUI_ICONS_TEXTURE);
