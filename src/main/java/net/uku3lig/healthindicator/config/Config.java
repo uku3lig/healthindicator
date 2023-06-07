@@ -12,12 +12,12 @@ import net.uku3lig.ukulib.config.Position;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Config implements IConfig<Config> {
-    private int minHealth;
-    private Position position;
-    private boolean playSound;
+    private int minHealth = 6;
+    private Position position = Position.TOP_LEFT;
+    private boolean playSound = false;
 
     @Override
     public Config defaultConfig() {
-        return new Config(6, Position.TOP_LEFT, false);
+        return new Config();
     }
 }
