@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.uku3lig.ukulib.config.IConfig;
-import net.uku3lig.ukulib.config.Position;
 
 @Getter
 @Setter
@@ -13,7 +12,8 @@ import net.uku3lig.ukulib.config.Position;
 @NoArgsConstructor
 public class Config implements IConfig<Config> {
     private int minHealth = 6;
-    private Position position = Position.TOP_LEFT;
+    private int x = -1;
+    private int y = -1;
     private boolean playSound = false;
 
     @Override
