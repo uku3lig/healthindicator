@@ -14,13 +14,13 @@ public abstract class MixinInGameHud {
     @ModifyArgs(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHealthBar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/entity/player/PlayerEntity;IIIIFIIIZ)V"))
     private void renderHealthIndicator(Args args) {
         Config config = HealthIndicator.getManager().getConfig();
-        DrawContext context = args.get(0);
+        DrawContext drawContext = args.get(0);
         int lastHealth = args.get(7);
 
         if (lastHealth <= config.getMinHealth()) {
             int x = config.getX() == -1 ? 5 : config.getX();
             int y = config.getY() == -1 ? 5 : config.getY();
-            context.drawTexture(HealthIndicator.ICONS, x, y, 0, 0, 32, 32);
+            HealthIndicator.drawWarning(drawContext, x, y);
         }
     }
 }

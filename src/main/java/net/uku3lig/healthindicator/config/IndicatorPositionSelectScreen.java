@@ -16,6 +16,6 @@ public class IndicatorPositionSelectScreen extends PositionSelectScreen {
 
     @Override
     protected void draw(DrawContext drawContext, int mouseX, int mouseY, float delta, int x, int y) {
-        drawContext.drawTexture(HealthIndicator.ICONS, x, y, 0, 0, 32, 32);
+        HealthIndicator.drawWarning(drawContext, x, y);
     }
 }
