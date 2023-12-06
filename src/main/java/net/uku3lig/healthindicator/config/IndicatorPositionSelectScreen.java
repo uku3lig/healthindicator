@@ -7,7 +7,7 @@ import net.uku3lig.ukulib.config.ConfigManager;
 import net.uku3lig.ukulib.config.screen.PositionSelectScreen;
 
 public class IndicatorPositionSelectScreen extends PositionSelectScreen {
-    protected IndicatorPositionSelectScreen(Screen parent, ConfigManager<Config> manager) {
+    protected IndicatorPositionSelectScreen(Screen parent, ConfigManager<HealthIndicatorConfig> manager) {
         super("Position Selection", parent, manager.getConfig().getX(), manager.getConfig().getY(), manager, (x, y) -> {
             manager.getConfig().setX(x);
             manager.getConfig().setY(y);

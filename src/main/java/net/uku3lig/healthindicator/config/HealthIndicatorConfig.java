@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Config implements Serializable {
+public class HealthIndicatorConfig implements Serializable {
     private int minHealth = 6;
     private int x = -1;
     private int y = -1;

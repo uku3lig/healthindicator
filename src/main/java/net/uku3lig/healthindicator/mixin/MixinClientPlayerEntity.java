@@ -8,7 +8,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.uku3lig.healthindicator.HealthIndicator;
-import net.uku3lig.healthindicator.config.Config;
+import net.uku3lig.healthindicator.config.HealthIndicatorConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,7 +22,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
     @Inject(method = "damage", at = @At("HEAD"))
     private void soundOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        Config config = HealthIndicator.getManager().getConfig();
+        HealthIndicatorConfig config = HealthIndicator.getManager().getConfig();
         if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()) {
             this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.PLAYERS, 1, 1);
         }
