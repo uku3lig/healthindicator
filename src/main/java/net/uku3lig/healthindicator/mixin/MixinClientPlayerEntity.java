@@ -5,7 +5,6 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.uku3lig.healthindicator.HealthIndicator;
 import net.uku3lig.healthindicator.config.HealthIndicatorConfig;
@@ -24,7 +23,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     private void soundOnDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         HealthIndicatorConfig config = HealthIndicator.getManager().getConfig();
         if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()) {
-            this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), SoundCategory.PLAYERS, 1, 1);
+            this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), 1, 1);
         }
     }
 }

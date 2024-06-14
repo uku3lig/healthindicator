@@ -7,7 +7,7 @@ import net.uku3lig.healthindicator.config.HealthIndicatorConfig;
 import net.uku3lig.ukulib.config.ConfigManager;
 
 public class HealthIndicator {
-    public static final Identifier ICONS = new Identifier("healthindicator", "warning.png");
+    public static final Identifier ICONS = Identifier.of("healthindicator", "warning.png");
     @Getter
     private static final ConfigManager<HealthIndicatorConfig> manager = ConfigManager.createDefault(HealthIndicatorConfig.class, "healthindicator");
 
