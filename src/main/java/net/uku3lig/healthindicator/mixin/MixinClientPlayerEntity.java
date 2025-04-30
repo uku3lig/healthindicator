@@ -4,7 +4,8 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 import net.uku3lig.healthindicator.HealthIndicator;
 import net.uku3lig.healthindicator.config.HealthIndicatorConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,7 +26,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
         if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()
                 && now >= HealthIndicator.getLastPlayedSound() + config.getSoundCooldownMs()) {
-            this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), 1, 1);
+            this.playSound(Registries.SOUND_EVENT.get(Identifier.tryParse(config.getSound())), 1, 1);
             HealthIndicator.setLastPlayedSound(now);
         }
     }

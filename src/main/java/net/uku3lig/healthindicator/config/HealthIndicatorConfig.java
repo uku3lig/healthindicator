@@ -17,4 +17,5 @@ public class HealthIndicatorConfig implements Serializable {
     private int y = -1;
     private boolean playSound = false;
     private int soundCooldownMs = 500;
+    private String sound = "block.note_block.banjo";
 }
