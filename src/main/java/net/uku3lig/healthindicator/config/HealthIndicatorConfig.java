@@ -16,4 +16,5 @@ public class HealthIndicatorConfig implements Serializable {
     private int x = -1;
     private int y = -1;
     private boolean playSound = false;
+    private int soundCooldownMs = 500;
 }

@@ -21,8 +21,12 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     @Inject(method = "updateHealth", at = @At("HEAD"))
     private void soundOnDamage(float health, CallbackInfo ci) {
         HealthIndicatorConfig config = HealthIndicator.getManager().getConfig();
-        if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()) {
+        long now = System.currentTimeMillis();
+
+        if (this.getHealth() <= config.getMinHealth() && config.isPlaySound()
+                && now >= HealthIndicator.getLastPlayedSound() + config.getSoundCooldownMs()) {
             this.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BANJO.value(), 1, 1);
+            HealthIndicator.setLastPlayedSound(now);
         }
     }
 }
