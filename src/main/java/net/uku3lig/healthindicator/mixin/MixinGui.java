@@ -1,7 +1,7 @@
 package net.uku3lig.healthindicator.mixin;
 
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.uku3lig.healthindicator.HealthIndicator;
 import net.uku3lig.healthindicator.config.HealthIndicatorConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,18 +9,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(InGameHud.class)
-public abstract class MixinInGameHud {
-    @ModifyArgs(method = "renderStatusBars", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHealthBar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/entity/player/PlayerEntity;IIIIFIIIZ)V"))
+@Mixin(Gui.class)
+public abstract class MixinGui {
+    @ModifyArgs(method = "renderPlayerHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;renderHearts(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/entity/player/Player;IIIIFIIIZ)V"))
     private void renderHealthIndicator(Args args) {
         HealthIndicatorConfig config = HealthIndicator.getManager().getConfig();
-        DrawContext drawContext = args.get(0);
+        GuiGraphics graphics = args.get(0);
         int lastHealth = args.get(7);
 
         if (lastHealth <= config.getMinHealth()) {
             int x = config.getX() == -1 ? 5 : config.getX();
             int y = config.getY() == -1 ? 5 : config.getY();
-            HealthIndicator.drawWarning(drawContext, x, y);
+            HealthIndicator.drawWarning(graphics, x, y);
         }
     }
 }

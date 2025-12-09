@@ -1,7 +1,7 @@
 package net.uku3lig.healthindicator.config;
 
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.uku3lig.healthindicator.HealthIndicator;
 import net.uku3lig.ukulib.config.ConfigManager;
 import net.uku3lig.ukulib.config.screen.PositionSelectScreen;
@@ -15,7 +15,7 @@ public class IndicatorPositionSelectScreen extends PositionSelectScreen {
     }
 
     @Override
-    protected void draw(DrawContext drawContext, int mouseX, int mouseY, float delta, int x, int y) {
+    protected void draw(GuiGraphics drawContext, int mouseX, int mouseY, float delta, int x, int y) {
         HealthIndicator.drawWarning(drawContext, x, y);
     }
 }

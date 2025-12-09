@@ -1,6 +1,6 @@
 package net.uku3lig.healthindicator;
 
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screens.Screen;
 import net.uku3lig.healthindicator.config.HealthIndicatorConfigScreen;
 import net.uku3lig.ukulib.api.UkulibAPI;
 
