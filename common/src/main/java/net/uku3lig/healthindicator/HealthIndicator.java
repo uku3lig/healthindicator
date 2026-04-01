@@ -22,6 +22,12 @@ public class HealthIndicator {
         graphics.blit(RenderPipelines.GUI_TEXTURED, HealthIndicator.ICONS, x, y, 0, 0, 32, 32, 32, 32);
     }
 
+    public static void drawWarningDefault(GuiGraphicsExtractor graphics) {
+        int x = manager.getConfig().getX() == -1 ? 5 : manager.getConfig().getX();
+        int y = manager.getConfig().getY() == -1 ? 5 : manager.getConfig().getY();
+        HealthIndicator.drawWarning(graphics, x, y);
+    }
+
     private HealthIndicator() {
     }
 }

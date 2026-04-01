@@ -1,4 +1,4 @@
-package net.uku3lig.healthindicator.mixin;
+package net.uku3lig.healthindicator.fabric.mixin;
 
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -18,9 +18,7 @@ public abstract class MixinGui {
         int lastHealth = args.get(7);
 
         if (lastHealth <= config.getMinHealth()) {
-            int x = config.getX() == -1 ? 5 : config.getX();
-            int y = config.getY() == -1 ? 5 : config.getY();
-            HealthIndicator.drawWarning(graphics, x, y);
+            HealthIndicator.drawWarningDefault(graphics);
         }
     }
 }
