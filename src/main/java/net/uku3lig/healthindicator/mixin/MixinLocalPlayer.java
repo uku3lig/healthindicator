@@ -20,7 +20,7 @@ public class MixinLocalPlayer extends AbstractClientPlayer {
     }
 
     @Inject(method = "hurtTo", at = @At("HEAD"))
-    private void soundOnDamage(float health, CallbackInfo ci) {
+    private void soundOnDamage(float newHealth, CallbackInfo ci) {
         HealthIndicatorConfig config = HealthIndicator.getManager().getConfig();
         long now = System.currentTimeMillis();
 
