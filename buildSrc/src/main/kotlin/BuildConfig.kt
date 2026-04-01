@@ -6,7 +6,7 @@ object BuildConfig {
 
     const val MOD_VERSION: String = "1.8.0"
 
-    const val MODRINTH_PROJECT_ID: String = "T9R7YTnA"
+    const val MODRINTH_PROJECT_ID: String = "gVFdvNDw"
 
     fun createVersionString(): String {
         return "$MOD_VERSION+mc$MINECRAFT_VERSION"
